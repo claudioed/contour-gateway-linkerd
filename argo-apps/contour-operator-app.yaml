@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: bets
   source:
     path: config/default
     repoURL: https://github.com/projectcontour/contour-operator.git
