@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    path: bitnami/contour
-    repoURL: https://github.com/bitnami/charts.git
+    path: contour-installation
+    repoURL: https://github.com/claudioed/contour-gateway-linkerd.git
     targetRevision: HEAD
   destination:
     namespace: projectcontour
