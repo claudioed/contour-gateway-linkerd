@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bets
+  name: contour
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    path: contour-installation
+    path: contour-installation/gateway
     repoURL: https://github.com/claudioed/contour-gateway-linkerd.git
     targetRevision: HEAD
   destination:
-    namespace: projectcontour
+    namespace: contour-operator
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
