@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: contour
+  name: contour-gateway
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,7 +12,7 @@ spec:
     repoURL: https://github.com/claudioed/contour-gateway-linkerd.git
     targetRevision: HEAD
   destination:
-    namespace: contour-operator
+    namespace: projectcontour
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
