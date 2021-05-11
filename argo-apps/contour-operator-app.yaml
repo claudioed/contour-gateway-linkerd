@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    path: contour-installation/operator
-    repoURL: https://github.com/claudioed/contour-gateway-linkerd.git
+    path: config/default
+    repoURL: https://github.com/projectcontour/contour-operator.git
     targetRevision: HEAD
   destination:
     namespace: contour-operator
