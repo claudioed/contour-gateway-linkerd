@@ -14,10 +14,14 @@ Doc Writer <claudioed.oliveira@gmail.com>
 * kubernetes cluster (minikube,kind)
 * ArgoCD installed
 
+== Intro
+This repo intents to be a simple example using Contour API Gateway and Linkerd as a service mesh implementation.
+We will use ArgoCD to manage cluster installation it makes our job easy for all.
+
+
 == Installing ArgoCD
 The purpose of this repo is not teach ArgoCD, but I prepared a simple sh
 to install it in your cluster. You can find it link:argo-install/argo.sh[here]
-
 
 == Installing Linkerd
 
