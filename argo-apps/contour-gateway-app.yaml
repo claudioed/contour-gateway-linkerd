@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: contour-operator
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: bets
+  source:
+    path: config/default
+    repoURL: https://github.com/projectcontour/contour-operator.git
+    targetRevision: HEAD
+  destination:
+    namespace: contour-operator
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  ignoreDifferences:
+    - group: "apiextensions.k8s.io"
+      kind: CustomResourceDefinition
+      jsonPointers:
+        - /spec/preserveUnknownFields
