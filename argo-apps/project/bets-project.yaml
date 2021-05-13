@@ -24,21 +24,11 @@ spec:
   destinations:
     - namespace: argocd
       server: https://kubernetes.default.svc
-    - namespace: kube-system
-      server: https://kubernetes.default.svc
-    - namespace: linkerd
-      server: https://kubernetes.default.svc
     - namespace: bets
       server: https://kubernetes.default.svc
     - namespace: contour-operator
       server: https://kubernetes.default.svc
-    - namespace: cert-manager
-      server: https://kubernetes.default.svc
   sourceRepos:
-    - https://helm.linkerd.io/stable
-    - https://kubernetes-charts.storage.googleapis.com
     - https://github.com/projectcontour/contour-operator.git
     - https://github.com/claudioed/bets-helm.git
     - https://github.com/claudioed/contour-gateway-linkerd.git
-    - https://charts.jetstack.io
-    - https://github.com/bitnami-labs/sealed-secrets.git
