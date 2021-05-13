@@ -30,6 +30,11 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: bets
       server: https://kubernetes.default.svc
+    - namespace: contour-operator
+      server: https://kubernetes.default.svc
   sourceRepos:
     - https://helm.linkerd.io/stable
     - https://kubernetes-charts.storage.googleapis.com
+    - https://github.com/projectcontour/contour-operator.git
+    - https://github.com/claudioed/bets-helm.git
+    - https://github.com/claudioed/contour-gateway-linkerd.git
