@@ -21,12 +21,20 @@ spec:
       kind: ClusterRole
     - group: rbac.authorization.k8s.io
       kind: ClusterRoleBinding
+    - group: networking.x-k8s.io
+      kind: GatewayClass
+    - group: networking.x-k8s.io
+      kind: Gateway
+    - group: operator.projectcontour.io
+      kind: Contour
   destinations:
     - namespace: argocd
       server: https://kubernetes.default.svc
     - namespace: bets
       server: https://kubernetes.default.svc
     - namespace: contour-operator
+      server: https://kubernetes.default.svc
+    - namespace: projectcontour
       server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/projectcontour/contour-operator.git
