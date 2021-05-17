@@ -1,0 +1,51 @@
+kind: GatewayClass
+apiVersion: networking.x-k8s.io/v1alpha1
+metadata:
+  name: contour-gatewayclass
+spec:
+  controller: projectcontour.io/contour-operator
+  parametersRef:
+    group: operator.projectcontour.io
+    kind: Contour
+    scope: Namespace
+    name: contour-gateway-bets
+    namespace: contour-operator
+---
+apiVersion: operator.projectcontour.io/v1alpha1
+kind: Contour
+metadata:
+  name: contour-gateway-bets
+  namespace: contour-operator
+spec:
+  gatewayClassRef: contour-gatewayclass
+  networkPublishing:
+    envoy:
+      type: NodePortService
+      # nodePorts are auto-assigned by k8s if unspecified.
+      nodePorts:
+        - name: http
+          portNumber: 30080
+        - name: https
+          portNumber: 30443
+---
+kind: Gateway
+apiVersion: networking.x-k8s.io/v1alpha1
+metadata:
+  name: bets-gateway
+spec:
+  gatewayClassName: contour-gatewayclass
+  listeners:
+    - protocol: HTTP
+      port: 80
+      routes:
+        kind: HTTPRoute
+        selector:
+          matchLabels:
+            gateway: bets-gateway
+    - protocol: HTTPS
+      port: 443
+      routes:
+        kind: HTTPRoute
+        selector:
+          matchLabels:
+            gateway: bets-gateway
