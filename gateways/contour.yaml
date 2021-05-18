@@ -48,6 +48,8 @@ spec:
         selector:
           matchLabels:
             gateway: bets-gateway
+        namespaces:
+          from: "All"
     - protocol: HTTPS
       port: 443
       routes:
@@ -55,3 +57,5 @@ spec:
         selector:
           matchLabels:
             gateway: bets-gateway
+        namespaces:
+          from: "All"
