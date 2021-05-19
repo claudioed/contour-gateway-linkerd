@@ -13,18 +13,46 @@ Doc Writer <claudioed.oliveira@gmail.com>
 == Requirements
 * kubernetes cluster (minikube,kind)
 * ArgoCD installed
+* Linkerd Cli
 
 == Intro
 This repo intents to be a simple example using Contour API Gateway and Linkerd as a service mesh implementation.
 We will use ArgoCD to manage cluster installation it makes our job easy for all.
-
 
 == Installing ArgoCD
 The purpose of this repo is not teach ArgoCD, but I prepared a simple sh
 to install it in your cluster. You can find it link:argo-install/argo.sh[here]
 
 == Installing Linkerd
+You can install linkderd using the script located at link:linkerd-install/linkerd.sh[here]
+
+Wait for a while to complete the linkerd installation, it will configure CA, identity and other components.
 
 == Installing Contour
 
+We will use argo to achieve this goal. Also we will kubernetes operators to manage our contour instances then we have an argo application that install link:argo-apps/contour-operator-app.yaml[Contour Operator] and finally we have an application for install Contour Gateway, link:argo-apps/contour-gateway-app.yaml[this file] describes an argo application that will install contour for us.
+
 == Installing Apps
+
+Finally we have the applications, it will be used for create an example for us. There are four applications bets, championships, matches and players each one has your argo application. Then we can install it applying these manifests.
+
+=== Deploying
+
+Let's put it in action, we should follow these steps
+
+* Start the minikube cluster (**minikube start**)
+* Install Argo link:argo-install[Description]
+* Install Linkerd link:linkerd-install[Description]
+* Create bets project link:argo-project[Argo Project]
+* Create argo applications link:argo-apps[Argo Project]
+* Test it!!!
+
+
+== Requirements
+* kubernetes cluster (minikube,kind)
+* ArgoCD installed
+* Linkerd Cli
+
+== Helm manifests
+
+Helm manifests can be located link:https://github.com/claudioed/bets-helm[here]
